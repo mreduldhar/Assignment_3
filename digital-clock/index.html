@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="clock">
+        <div class="display">
+            <h1>Digital Clock</h1>
+          <h1 id="time"></h1>
+          <h1 id="timeFormat"></h1>
+          
+        </div>
+      </div>
+
+
+
+    <!-- Javascript Start -->
+    <script>
+
+   
+        function digitalClock(){
+
+            let date = new Date();
+            
+           
+            let hours = date.getHours();
+            let minutes = date.getMinutes();
+            let seconds =  date.getSeconds();
+           
+
+
+            let clockFormat = hours >= 12 ? "PM": "AM";
+            hours = hours % 12 || 12;
+            hours = hours < 10 ? "0" + hours : hours;
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+          
+
+            let time = `${hours}:${minutes}:${seconds}`;
+            
+            document.querySelector('#time').innerText = time;
+            document.querySelector('#timeFormat').innerText = clockFormat;
+
+            setInterval(digitalClock, 1000);
+        }
+
+        digitalClock();
+
+
+        // Brief Description:
+
+        // The digitalClock() function gets the current time using the Date object and formats it to display in the 12-hour clock format with AM or PM indicator.
+
+        // The 'hours', 'minutes', and 'seconds' variables are extracted from the Date object and then checked to see if they are less than 10. If they are, a leading zero is added to the time value.
+
+        // The clock format is determined using a ternary operator. If the hours variable is greater than or equal to 12, the format is PM, otherwise it's AM.
+
+        // To convert the hours to 12-hour format, the % operator is used with the value 12 and the result is checked to see if it is equal to 0. If it is, the hours variable is set to 12, otherwise, it is set to the remainder of the calculation.
+
+        // Finally, the time and format are displayed in the HTML page using innerText property of the respective HTML elements.
+
+        // The setInterval() method is used to update the time every second by calling the digitalClock() function.
+
+    </script>
+</body>
+</html>
